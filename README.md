@@ -1,6 +1,6 @@
 # rancher-ui-driver-oci
 
-Rancher UI driver for the [Oracle Cloud Infrastructure (OCI) docker-machine driver](https://github.com/oci/docker-machine-driver-oci)
+Rancher UI driver for the [Oracle Cloud Infrastructure (OCI) rancher-machine driver](https://github.com/rancher-plugins/rancher-machine-driver-oci)
 
 ## Usage
 
@@ -18,7 +18,7 @@ If the OCI Node Driver is not inluded as a built-in driver:
 * Add a Machine Driver in Rancher (Global -> Node Drivers)
   * Download URL:
 
-    `https://github.com/rancher-plugins/docker-machine-driver-oci/releases/download/v1.0.0/docker-machine-driver-oci-darwin`
+    `https://github.com/rancher-plugins/rancher-machine-driver-oci/releases/download/v1.0.0/rancher-machine-driver-oci-darwin`
 
   * Custom UI URL:
 
