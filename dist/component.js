@@ -31,13 +31,19 @@ define("nodes/components/driver-oci/component", ["exports", "shared/mixins/node-
   var observer = Ember.observer;
   var hash = Ember.RSVP.hash;
   var regionMap = {
-    'Mumbai': 'ap-mumbai-1',
-    'Seoul': 'ap-seoul-1',
-    'Tokyo': 'ap-tokyo-1',
+    'Sydney': 'ap-sydney-1',
+    'Melbourne': 'ap-melbourne-1',
+    'Sao Paolo': 'sa-saopaulo-1',
+    'Montreal': 'ca-montreal-1',
     'Toronto': 'ca-toronto-1',
     'Frankfurt': 'eu-frankfurt-1',
+    'Mumbai': 'ap-mumbai-1',
+    'Osaka': 'ap-osaka-1',
+    'Tokyo': 'ap-tokyo-1',
+    'Amsterdam': 'eu-amsterdam-1',
+    'Jeddah': 'me-jeddah-1',
+    'Seoul': 'ap-seoul-1',
     'Zurich': 'eu-zurich-1',
-    'Sao Paolo': 'sa-saopaulo-1',
     'London': 'uk-london-1',
     'Ashburn': 'us-ashburn-1',
     'Phoenix': 'us-phoenix-1'
