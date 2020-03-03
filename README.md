@@ -6,16 +6,11 @@ Rancher UI driver for the [Oracle Cloud Infrastructure (OCI) rancher-machine dri
 
 Manual installation is not required in [Rancher](https://rancher.com/products/rancher/) [v2.4.0+](https://forums.rancher.com/t/rancher-release-v2-4-0/) as the OCI Node Driver will be included.
 
-Integration with OCI Kubernetes Addons:
-
-* [OCI Flexvolume Driver](https://github.com/oracle/oci-flexvolume-driver) (for provisioning [Block Volumes](https://docs.cloud.oracle.com/en-us/iaas/Content/Block/Concepts/overview.htm))
-* [OCI Cloud Controller Manager](https://github.com/oracle/oci-cloud-controller-manager) (for provisioning [LoadBalancers](https://docs.cloud.oracle.com/en-us/iaas/Content/Balance/Concepts/balanceoverview.htm))
-
 ## Setup
 
 If the OCI Node Driver is not inluded as a built-in driver:
 
-* Add a Machine Driver in Rancher (Global -> Node Drivers)
+* Add a Machine Driver in Rancher (Global > Node Drivers)
   * Download URL:
 
     `https://github.com/rancher-plugins/rancher-machine-driver-oci/releases/download/v1.0.0/rancher-machine-driver-oci-darwin`

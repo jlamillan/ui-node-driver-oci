@@ -100,32 +100,6 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col span-6">
-        <label class="acc-label">
-          {{t "nodeDriver.oci.dockerPort.label"}}
-        </label>
-        {{input
-          type="text"
-          value=model.ociConfig.nodeDockerPort
-          classNames="form-control"
-          placeholder=(t "nodeDriver.oci.dockerPort.placeholder")
-        }}
-      </div>
-      <div class="col span-6">
-        <label class="acc-label">
-          {{t "nodeDriver.oci.sshUser.label"}}
-        </label>
-        {{input
-          type="text"
-          value=model.ociConfig.sshUser
-          classNames="form-control"
-          placeholder=(t "nodeDriver.oci.sshUser.placeholder")
-        }}
-      </div>
-    </div>
-
-
 
   {{/accordion-list-item}}
 
@@ -141,17 +115,6 @@
     <div class="row">
       <div class="col span-6">
         <label class="acc-label">
-          {{t "nodeDriver.oci.vcnCompartment.label"}}
-        </label>
-        {{input
-          type="text"
-          value=model.ociConfig.vcnCompartmentId
-          classNames="form-control"
-          placeholder=(t "nodeDriver.oci.vcnCompartment.placeholder")
-        }}
-      </div>
-      <div class="col span-6">
-        <label class="acc-label">
           {{t "nodeDriver.oci.vcn.label"}}
         </label>
         {{input
@@ -159,6 +122,17 @@
           value=model.ociConfig.vcnId
           classNames="form-control"
           placeholder=(t "nodeDriver.oci.vcn.placeholder")
+        }}
+      </div>
+      <div class="col span-6">
+        <label class="acc-label">
+          {{t "nodeDriver.oci.vcnCompartment.label"}}
+        </label>
+        {{input
+          type="text"
+          value=model.ociConfig.vcnCompartmentId
+          classNames="form-control"
+          placeholder=(t "nodeDriver.oci.vcnCompartment.placeholder")
         }}
       </div>
     </div>

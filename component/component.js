@@ -16,8 +16,6 @@ const service = Ember.inject.service;
 const observer = Ember.observer;
 const hash = Ember.RSVP.hash;
 
-const defaultRadix = 10;
-const defaultBase = 1024;
 /*!!!!!!!!!!!GLOBAL CONST END!!!!!!!!!!!*/
 
 const regionMap = {
@@ -89,16 +87,10 @@ export default Ember.Component.extend(NodeDriver, {
     let config = get(this, 'globalStore').createRecord({
       type: '%%DRIVERNAME%%Config',
       instanceType: 'VM.Standard2.1',
-      region:            'us-phoenix-1',
+      region: 'us-phoenix-1',
       nodeImage: 'Oracle-Linux-7.7',
-      uaPrefix: 'Rancher',
       tags: '',
-      authorizedUsers: '',
-      createPrivateIp: true,
-      stackscript: '',
-      stackscriptData: '',
       rootPass: null,
-      privateKeyPassphrase: null,
     });
 
     set(this, 'model.%%DRIVERNAME%%Config', config);
