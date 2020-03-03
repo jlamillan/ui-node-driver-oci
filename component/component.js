@@ -86,7 +86,6 @@ export default Ember.Component.extend(NodeDriver, {
     // bootstrap is called by rancher ui on 'init', you're better off doing your setup here rather then the init function to ensure everything is setup correctly
     let config = get(this, 'globalStore').createRecord({
       type: '%%DRIVERNAME%%Config',
-      instanceType: 'VM.Standard2.1',
       region: 'us-phoenix-1',
       nodeImage: 'Oracle-Linux-7.7',
       tags: '',
@@ -104,22 +103,30 @@ export default Ember.Component.extend(NodeDriver, {
     if (!get(this, 'model.name')) {
       errors.push('Name is required');
     }
-
-    if (!this.get('model.%%DRIVERNAME%%Config.instanceType')) {
-      errors.push('Specifying a %%DRIVERNAME%% Instance Type is required');
-    }
-
-    if (!this.get('model.%%DRIVERNAME%%Config.nodeImage')) {
-      errors.push('Specifying a %%DRIVERNAME%% Image is required');
-    }
-
     if (!this.get('model.%%DRIVERNAME%%Config.region')) {
       errors.push('Specifying a %%DRIVERNAME%% Region is required');
     }
-
-//    if (!this.validateCloudCredentials()) {
-//      errors.push(this.intl.t('nodeDriver.cloudCredentialError'));
-//    }
+    if (!this.get('model.%%DRIVERNAME%%Config.nodeImage')) {
+      errors.push('Specifying a %%DRIVERNAME%% node image is required');
+    }
+    if (!this.get('model.%%DRIVERNAME%%Config.nodeShape')) {
+      errors.push('Specifying a %%DRIVERNAME%% node shape is required');
+    }
+    if (!this.get('model.%%DRIVERNAME%%Config.nodeCompartmentId') || !get(this, 'model.%%DRIVERNAME%%Config.nodeCompartmentId').startsWith('ocid1.compartment')) {
+      errors.push('Specifying a valid %%DRIVERNAME%% node compartment is required');
+    }
+    if (!this.get('model.%%DRIVERNAME%%Config.nodeAvailabilityDomain')) {
+      errors.push('Specifying a %%DRIVERNAME%% node availability domain is required');
+    }
+    if (!this.get('model.%%DRIVERNAME%%Config.vcnCompartmentId')) {
+      set(this, 'model.%%DRIVERNAME%%Config.vcnCompartmentId', get(this, 'model.%%DRIVERNAME%%Config.nodeCompartmentId'));
+    }
+    if (!this.get('model.%%DRIVERNAME%%Config.vcnId') || !get(this, 'model.%%DRIVERNAME%%Config.vcnId').startsWith('ocid1.vcn')) {
+      errors.push('Specifying a valid %%DRIVERNAME%% VCN OCID is required');
+    }
+    if (!this.get('model.%%DRIVERNAME%%Config.subnetId') || !get(this, 'model.%%DRIVERNAME%%Config.subnetId').startsWith('ocid1.subnet')) {
+      errors.push('Specifying a valid %%DRIVERNAME%% subnet OCID is required');
+    }
 
     // Set the array of errors for display,
     // and return true if saving should continue.
