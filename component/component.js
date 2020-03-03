@@ -160,22 +160,36 @@ export default Ember.Component.extend(NodeDriver, {
         return region;
     }),
     adChoices: computed('model.%%DRIVERNAME%%Config.region', function() {
-        // TODO get these values dynamically
-        let values = {
-          "AD1": "jGnV:" + get(this, 'model.%%DRIVERNAME%%Config.region').toUpperCase().replace('-1', '').replace('US-PHOENIX', 'PHX') + "-AD-1",
-          "AD2": "jGnV:" + get(this, 'model.%%DRIVERNAME%%Config.region').toUpperCase().replace('-1', '').replace('US-PHOENIX', 'PHX') + "-AD-2",
-          "AD3": "jGnV:" + get(this, 'model.%%DRIVERNAME%%Config.region').toUpperCase().replace('-1', '').replace('US-PHOENIX', 'PHX') + "-AD-3",
-          };
-          
-          // get the keys
-          let keys = Object.keys(values);
-          // map the values into want you want
-          let result = keys.map(key => {
-            //return {label:values[key], value:key}
-            return {label:values[key], value:values[key]}
-          })
-          return result
-      }),
+        // TODO get these values dynamically from OCI API
+
+        const region = get(this, 'model.%%DRIVERNAME%%Config.region')
+        var values
+
+        // 3 availability domains available
+        if (region == "uk-london-1" || region == "us-ashburn-1" || region == "us-phoenix-1" || region == "eu-frankfurt-1") {
+            values = {
+                "AD1": "jGnV:" + region.toUpperCase().replace('-1', '').replace('US-PHOENIX', 'PHX') + "-AD-1",
+                "AD2": "jGnV:" + region.toUpperCase().replace('-1', '').replace('US-PHOENIX', 'PHX') + "-AD-2",
+                "AD3": "jGnV:" + region.toUpperCase().replace('-1', '').replace('US-PHOENIX', 'PHX') + "-AD-3",
+            };
+        } else {
+            // 1 availability domain available
+            values = {
+                "AD1": "jGnV:" + region.toUpperCase().replace('-1', '').replace('US-PHOENIX', 'PHX') + "-AD-1",
+            };
+        }
+
+        // get the keys
+        let keys = Object.keys(values);
+        // map the values into want you want
+        let result = keys.map(key => {
+            return {
+                label: values[key],
+                value: values[key]
+            }
+        })
+        return result
+    }),
     selectedAd: computed('model.%%DRIVERNAME%%Config.nodeAvailabilityDomain', function() {
         const ad = get(this, 'model.%%DRIVERNAME%%Config.nodeAvailabilityDomain');
 

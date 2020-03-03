@@ -168,11 +168,21 @@ define("nodes/components/driver-oci/component", ["exports", "shared/mixins/node-
       return region;
     }),
     adChoices: computed('model.ociConfig.region', function () {
-      var values = {
-        "AD1": "jGnV:" + get(this, 'model.ociConfig.region').toUpperCase().replace('-1', '').replace('US-PHOENIX', 'PHX') + "-AD-1",
-        "AD2": "jGnV:" + get(this, 'model.ociConfig.region').toUpperCase().replace('-1', '').replace('US-PHOENIX', 'PHX') + "-AD-2",
-        "AD3": "jGnV:" + get(this, 'model.ociConfig.region').toUpperCase().replace('-1', '').replace('US-PHOENIX', 'PHX') + "-AD-3"
-      };
+      var region = get(this, 'model.ociConfig.region');
+      var values;
+
+      if (region == "uk-london-1" || region == "us-ashburn-1" || region == "us-phoenix-1" || region == "eu-frankfurt-1") {
+        values = {
+          "AD1": "jGnV:" + region.toUpperCase().replace('-1', '').replace('US-PHOENIX', 'PHX') + "-AD-1",
+          "AD2": "jGnV:" + region.toUpperCase().replace('-1', '').replace('US-PHOENIX', 'PHX') + "-AD-2",
+          "AD3": "jGnV:" + region.toUpperCase().replace('-1', '').replace('US-PHOENIX', 'PHX') + "-AD-3"
+        };
+      } else {
+        values = {
+          "AD1": "jGnV:" + region.toUpperCase().replace('-1', '').replace('US-PHOENIX', 'PHX') + "-AD-1"
+        };
+      }
+
       var keys = Object.keys(values);
       var result = keys.map(function (key) {
         return {
