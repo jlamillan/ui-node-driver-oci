@@ -18,6 +18,7 @@ const hash = Ember.RSVP.hash;
 
 /*!!!!!!!!!!!GLOBAL CONST END!!!!!!!!!!!*/
 
+// TODO get these values dynamically from OCI API (/20160918/regions)
 const regionMap = {
     'Sydney': 'ap-sydney-1',
     'Melbourne': 'ap-melbourne-1',
@@ -37,6 +38,7 @@ const regionMap = {
     'Phoenix': 'us-phoenix-1',
 }
 
+// TODO get these values dynamically from OCI API (/20160918/shapes)
 const nodeShapeMap = {
     'VM.Standard1.1': 'VM.Standard1.1',
     'VM.Standard1.2': 'VM.Standard1.2',
@@ -64,6 +66,7 @@ const nodeShapeMap = {
     'VM.GPU3.4': 'VM.GPU3.8',
 }
 
+// TODO get these values dynamically from OCI API (/20160918/images)
 const imageMap = {
     'Oracle-Linux-7.7': 'Oracle-Linux-7.7',
 }
@@ -75,7 +78,6 @@ export default Ember.Component.extend(NodeDriver, {
     app: service(),
     intl: service(),
     init() {
-        // This does on the fly template compiling, if you mess with this :cry:
         const decodedLayout = window.atob(LAYOUT);
         const template = Ember.HTMLBars.compile(decodedLayout, {
             moduleName: 'nodes/components/driver-%%DRIVERNAME%%/template'
@@ -160,7 +162,7 @@ export default Ember.Component.extend(NodeDriver, {
         return region;
     }),
     adChoices: computed('model.%%DRIVERNAME%%Config.region', function() {
-        // TODO get these values dynamically from OCI API
+        // TODO get these values dynamically from OCI API (/20160918/availabilityDomains)
 
         const region = get(this, 'model.%%DRIVERNAME%%Config.region')
         var values
